@@ -24,7 +24,7 @@ function anotherFunction() {
 
 // Block statements
 // The 'let' and 'const' keywords support the declaration of local scope
-// inside block statements. 'var' doesn`t
+// inside block statements. 'var' doesn't
 {
     var a = 'I';
     let b = 'Love';
