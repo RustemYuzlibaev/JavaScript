@@ -8,12 +8,12 @@
 // String, Number, Boolean, Object, Function, Array, Date, RegExp, Error
 
 let strPrimitive = 'I am a string';
-typeof strPrimitive;							      // string
-strPrimitive instanceof String;					// false
+typeof strPrimitive;  // string
+strPrimitive instanceof String;  // false
 
 let strObject = new String('I am a string');
-typeof strObject; 								      // object
-strObject instanceof String;            // true
+typeof strObject;  // object
+strObject instanceof String;  // true
 
 
 // To make primitives seem more like references, JS has three primitive wrapper types:
