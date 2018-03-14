@@ -74,6 +74,16 @@ let employeeDuplicate = Object.assign({}, employeeOriginal);
 employeeDuplicate.age = 21;
 console.log(employeeOriginal.age);          // 20
 console.log(employeeDuplicate.age);         // 21
+// This, however, is merely a shallow copy. If our object contains objects,
+// they will remain shared references, which is not what we want:
+function mutateDeepObject(obj) {
+  obj.a.thing = true;
+}
+
+const obj = {a: {thing: false}};
+const copy = Object.assign({}, obj);
+mutateDeepObject(copy)
+console.log(obj.a.thing);  // true (not false)
 
 // PropertyDescriptors
 // 1) writable – if true, can be changed, otherwise it’s read-only.

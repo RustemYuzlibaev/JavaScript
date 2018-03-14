@@ -14,24 +14,24 @@ console.log(a);
 console.log(b);
 console.log(c);
 
-var a = 1;     // underfined
-let b = 2;     // ReferenceError
-const c = 3;    // ReferenceError
+var a = 1; // underfined
+let b = 2; // ReferenceError
+const c = 3; // ReferenceError
 
 // Hoisting functions ****
 // JavaScript functions can be loosely classified as the following:
 // 1) Function declarations
 // 2) Function expressions
 console.log(funDeclaration()); // I`m hoisted
-console.log(funExpression());  // ReferenceError
+console.log(funExpression()); // ReferenceError
 
 function funDeclaration() {
-  return 'I`m hoisted';        // Function declarations are not hoisted.
+  return 'I`m hoisted'; // Function declarations are hoisted.
 }
 
-funExpression = function () {
-  return 'I`m not';             // Function expressions are not hoisted.
-}
+funExpression = function() {
+  return 'I`m not'; // Function expressions are not hoisted.
+};
 
 // Hoisting Classes ****
 // JavaScript classes too can be loosely classified either as:
@@ -51,7 +51,7 @@ class Hobbit {
 }
 
 // 2
-let Square = new Polygon();  // ReferenceError: Polygon is not defined
+let Square = new Polygon(); // ReferenceError: Polygon is not defined
 Square.height = 10;
 Square.width = 10;
 
@@ -70,7 +70,7 @@ let Polygon = class Polygon {
 var double = 22;
 
 function double(num) {
-  return (num * 2);
+  return num * 2;
 }
 
 console.log(typeof double); // number
@@ -79,7 +79,7 @@ console.log(typeof double); // number
 var double;
 
 function double(num) {
-  return (num * 2);
+  return num * 2;
 }
 
 console.log(typeof double); // function
