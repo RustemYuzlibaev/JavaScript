@@ -8,6 +8,6 @@
 
 [GUIDE TO JAVASCRIPT REGULAR EXPRESSIONS](https://flaviocopes.com/javascript-regular-expressions/)
 
-[]()
+[Guide to object rest/spread operator](https://dmitripavlutin.com/object-rest-spread-properties-javascript/)
 []()
 []()
