@@ -2,11 +2,14 @@
 
 // forEach()
 let colors = ['green', 'red', 'blue'];
-colors.forEach(function (color) {
+colors.forEach(function(color) {
   console.log(color);
 });
 
 const numbers = [0, 1, 2, 3, 4, 5, 6];
+
+// includes
+numbers.includes(3); // true
 
 // map()
 const doubledNumbers = numbers.map(function(n) {
@@ -22,7 +25,7 @@ console.log(evenNumbers); // [0, 2, 4, 6]
 
 // reduce()
 const sum = numbers.reduce(
-  function (acc, n) {
+  function(acc, n) {
     return acc + n;
   },
   0 // accumulator variable value at first iteration step
@@ -30,20 +33,20 @@ const sum = numbers.reduce(
 console.log(sum); // 21
 
 // find()
-let x = 4;       // sought-for element
-const found = numbers.find(function (number) {
+let x = 4; // sought-for element
+const found = numbers.find(function(number) {
   return x === number;
 });
 console.log(found); // logs element or underfined if doesn't exist
 
 // some
-const numBiggerThan0 = numbers.some(function (number) {
+const numBiggerThan0 = numbers.some(function(number) {
   return number > 0;
 });
 console.log(numBiggerThan0); // true, since some of them are bigger than 0
 
 // every
-const numLessThan6 = numbers.every(function (number) {
+const numLessThan6 = numbers.every(function(number) {
   return number < 6;
 });
 console.log(numLessThan6); // false, since not every are less than 6
