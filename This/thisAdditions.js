@@ -1,4 +1,4 @@
-// This is a keyword whose value changes depending on how a funciton gets called.
+// This is a keyword whose value changes depending on how a function gets called.
 // There are six different ways where 'this' can take on new values.
 // 1. 'this' in global context
 // 2. 'this' in object constructor
@@ -50,39 +50,40 @@ object4.sayThis(); // Window
 
 // another example (and how to avoid it)
 const obj4 = {
-  doSomething: function () {
-     let self = this; // refers to object itself
+  doSomething: function() {
+    let self = this; // refers to object itself
 
     (function callPrintFunction() {
       self.printSomething(); // this.printSomething, 'this' would be set to Window
     })();
   },
 
-  printSomething: function () {
+  printSomething: function() {
     console.log('I`m callable');
   }
-}
+};
 
 obj4.doSomething(); // I`m callable
 
 // 5
 // same principle but without 'self'
 const object5 = {
-  doSomething: function () {                               // 'this' in arrow function
+  doSomething: function() {
+    // 'this' in arrow function
     const callPrintFunction = () => this.printSomething(); // is always the same as
-    callPrintFunction();                                   // 'this' around it
+    callPrintFunction(); // 'this' around it
   },
 
-  printSomething: function () {
+  printSomething: function() {
     console.log('I`m callable');
   }
-}
+};
 
 object5.doSomething(); // I`m callable
 
 // 6
 let button = document.querySelector('button');
 
-button.addEventListener('click', function () {
+button.addEventListener('click', function() {
   console.log(this); // button
 });

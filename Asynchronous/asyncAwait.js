@@ -101,14 +101,4 @@ async function fetchJson(url) {
   }
 }
 
-fetchJson('http://example.com/some_file.json').then(obj => console.log(obj));
-
-// *** logging the contents of several files pointed via URLs
-async function logContent(urls) {
-  await Promise.all(
-    urls.map(async url => {
-      const content = await httpGet(url);
-      console.log(content);
-    })
-  );
-}
+fetchJson("http://example.com/some_file.json").then(obj => console.log(obj));

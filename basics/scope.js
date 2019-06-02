@@ -1,20 +1,19 @@
 // There are two types of scopes: Global scope and local scope.
-// Variables inside the Global scope can be accessed and altered in any other scope.
-// Variables inside the Local scope can be accessed and altered within this scope.
+// Variables defined inside a function are not accessible (visible) from outside the function
 
 'use strict';
 
 // Global Scope
 function someFunction() {
-    // Local Scope #1
-    function someOtherFunction() {
-        // Local Scope #2
-    }
+  // Local Scope #1
+  function someOtherFunction() {
+    // Local Scope #2
+  }
 }
 
 // Global Scope
 function anotherFunction() {
-    // Local Scope #3
+  // Local Scope #3
 }
 // Global Scope
 
@@ -23,12 +22,11 @@ function anotherFunction() {
 // only within the function. You can't get this variable once you get out of it.
 
 // Block statements
-// The 'let' and 'const' keywords support the declaration of local scope
-// inside block statements. 'var' doesn't
+// 'let' and 'const' have a block scope whereas 'var' has a functional scope
 {
-    var a = 'I';
-    let b = 'Love';
-    const c = 'JavaScript';
+  var a = 'I';
+  let b = 'Love';
+  const c = 'JavaScript';
 }
 
 console.log(a); // I
@@ -60,29 +58,29 @@ function outer() {
 // To keep everything separate from the global we must first encapsulate
 // our functions within a function like this:
 
-let module = (function () {
+let module = (function() {
   let _counter = 0;
 
-  let _somePrivateMethod = function () {
+  let _somePrivateMethod = function() {
     console.log('I`m not accessable');
-  }
+  };
 
-  let increaseCounter = function () {
+  let increaseCounter = function() {
     return ++_counter;
-  }
+  };
 
-  let getCounter = function () {
+  let getCounter = function() {
     return _counter;
-  }
+  };
 
   return {
     increaseCounter: increaseCounter,
     getCounter: getCounter
-  }
-}());
+  };
+})();
 
-console.log(module.increaseCounter());   // 1, accessable
-console.log(module.getCounter());        // 1, accessable
-console.log(module._somePrivateMethod);  // underfined, not accessable
-console.log(_counter);                  // ReferenceError, not accessable
-console.log(module._counter);           // underfined, not accessable
+console.log(module.increaseCounter()); // 1, accessable
+console.log(module.getCounter()); // 1, accessable
+console.log(module._somePrivateMethod); // underfined, not accessable
+console.log(_counter); // ReferenceError, not accessable
+console.log(module._counter); // underfined, not accessable

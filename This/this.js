@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 // Default Binding ***********
 function foo1() {
@@ -8,7 +8,6 @@ function foo1() {
 let a = 1;
 foo1(); // TypeError
 // ***************************
-
 
 // Implicit Binding **********
 function foo2() {
@@ -23,7 +22,6 @@ let obj2 = {
 obj2.foo2(); // 2
 // ***************************
 
-
 // Explicit Binding **********
 function foo3() {
   console.log(this.c);
@@ -31,12 +29,11 @@ function foo3() {
 
 let obj3 = {
   c: 3
-}
+};
 
-foo3.call(obj3);  // 3
+foo3.call(obj3); // 3
 foo3.apply(obj3); // 3
 // ***************************
-
 
 // new Binding ***************
 function foo4(d) {
@@ -61,12 +58,12 @@ let obj5 = {
 };
 
 let bar5 = obj5.foo5; // function reference/alias
-let e = 'Oops, TypeError';
+let e = "Oops, TypeError";
 bar5(); // TypeError (leads to 'default binding')
 
 // *** Imlicitly Lost in Callback Function
 function foo6() {
-  console.log(this.a);
+  console.log(this.f);
 }
 
 function doFoo6(fn) {
@@ -77,9 +74,9 @@ function doFoo6(fn) {
 let obj6 = {
   f: 2,
   foo6
-}
+};
 
-let f = 'Oops, TypeError';
+let f = "Oops, TypeError";
 doFoo6(obj6.foo6); // TypeError
 // ***************************
 
@@ -92,11 +89,11 @@ let obj7 = {
   g: 7
 };
 
-let bar7 = function () {
+let bar7 = function() {
   foo7.call(obj7);
 };
 
-bar7();                 // 7, doesn`t lose value
+bar7(); // 7, doesn`t lose value
 setTimeout(bar7, 1000); // 7, also in 'cb'
 
 // *** Hard Binding with 'bind'
@@ -116,7 +113,7 @@ console.log(baz8); // 8
 
 // 'this' in Arrow function *
 function foo9() {
-  return (i) => {
+  return i => {
     console.log(this.i);
   };
 }

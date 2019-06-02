@@ -1,5 +1,17 @@
 'use strict';
 
+// Computed Property Names
+// ES6 adds computed property names, where you can specify an expression, surrounded by a [ ] pair
+const prefix = 'foo';
+
+var myObject = {
+  [prefix + 'bar']: 'hello',
+  [prefix + 'baz']: 'world'
+};
+
+myObject['foobar']; // hello
+myObject['foobaz']; // world
+
 // *** Spread/rest operator ******************************** //
 const arr1 = ['a', 'b', 'c'];
 const arr2 = [...arr1, 'd', 'e', 'f']; // ['a', 'b', 'c', 'd', 'e', 'f']

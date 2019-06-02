@@ -8,31 +8,12 @@
 // String, Number, Boolean, Object, Function, Array, Date, RegExp, Error
 
 let strPrimitive = 'I am a string';
-typeof strPrimitive;  // string
-strPrimitive instanceof String;  // false
+typeof strPrimitive; // string
+strPrimitive instanceof String; // false
 
 let strObject = new String('I am a string');
-typeof strObject;  // object
-strObject instanceof String;  // true
-
-
-// To make primitives seem more like references, JS has three primitive wrapper types:
-// String, Number, Boolean.
-// JavaScript creates these objects behind the scenes so that you can threat primitives
-// like regular objects, but the temporary objects are destroyed as soon as the statement
-// using them is complete
-
-// Computed Property Names
-// ES6 adds computed property names, where you can specify an expression, surrounded by a [ ] pair
- const prefix = 'foo';
-
-var myObject = {
-	[prefix + 'bar']: 'hello',
-	[prefix + 'baz']: 'world'
-};
-
-myObject['foobar'];       // hello
-myObject['foobaz'];       // world
+typeof strObject; // object
+strObject instanceof String; // true
 
 // Deep and Shallow copy
 let employeeOriginal = {
@@ -44,8 +25,8 @@ let employeeOriginal = {
 let employeeDuplicate = employeeOriginal;
 
 employeeDuplicate.age = 21;
-console.log(employeeOriginal.age);         // 21
-console.log(employeeDuplicate.age);        // 21
+console.log(employeeOriginal.age); // 21
+console.log(employeeDuplicate.age); // 21
 
 // deep copy
 let employeeDuplicate = {
@@ -55,15 +36,20 @@ let employeeDuplicate = {
 };
 
 employeeDuplicate.age = 21;
-console.log(employeeOriginal.age);          // 20
-console.log(employeeDuplicate.age);         // 21
+console.log(employeeOriginal.age); // 20
+console.log(employeeDuplicate.age); // 21
 
-// Another method by using JSON (deep copy)
+// Another method by using JSON serialization (deep copy)
+// By doing this you will lose any Javascript property that has no equivalent type in JSON,
+// like Function or Infinity. Any property that’s assigned to
+// undefined will simply be ignored by JSON.stringify, causing them to be missed
+// on the cloned object.
+// This only works if you do not have any inner objects and functions, but just values
 let employeeDuplicate = JSON.parse(JSON.stringify(employeeOriginal));
 
 employeeDuplicate.age = 21;
-console.log(employeeOriginal.age);          // 20
-console.log(employeeDuplicate.age);         // 21
+console.log(employeeOriginal.age); // 20
+console.log(employeeDuplicate.age); // 21
 
 // Object.assign(target, object1, object2...)
 // method only copies enumerable and own properties from a source object to a target object.
@@ -72,18 +58,18 @@ console.log(employeeDuplicate.age);         // 21
 // if the merge sources contain getters.
 let employeeDuplicate = Object.assign({}, employeeOriginal);
 employeeDuplicate.age = 21;
-console.log(employeeOriginal.age);          // 20
-console.log(employeeDuplicate.age);         // 21
+console.log(employeeOriginal.age); // 20
+console.log(employeeDuplicate.age); // 21
 // This, however, is merely a shallow copy. If our object contains objects,
 // they will remain shared references, which is not what we want:
 function mutateDeepObject(obj) {
   obj.a.thing = true;
 }
 
-const obj = {a: {thing: false}};
+const obj = { a: { thing: false } };
 const copy = Object.assign({}, obj);
-mutateDeepObject(copy)
-console.log(obj.a.thing);  // true (not false)
+mutateDeepObject(copy);
+console.log(obj.a.thing); // true (not false)
 
 // PropertyDescriptors
 // 1) writable – if true, can be changed, otherwise it’s read-only.
@@ -95,12 +81,12 @@ let myObj1 = {};
 
 Object.defineProperty(myObj1, 'a', {
   value: 2,
-  writable: false,   // not writable
+  writable: false, // not writable
   configurable: true,
   enumerable: true
 });
 
-myObj1.a = 3;             // TypeError
+myObj1.a = 3; // TypeError
 
 // Non-configurable
 let myObj2 = {};
@@ -108,7 +94,7 @@ let myObj2 = {};
 Object.defineProperty(myObj2, 'a', {
   value: 2,
   writable: true,
-  configurable: false,   // not configurable
+  configurable: false, // not configurable
   enumerable: true
 });
 // later
@@ -135,7 +121,7 @@ Object.defineProperty(myObj3, 'b', {
 });
 
 for (let key in myObj3) {
-  console.log(key);       // a
+  console.log(key); // a
 }
 
 // Sealing an object globally
